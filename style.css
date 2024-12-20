@@ -1,0 +1,15 @@
+.container {
+  max-width: 12000px;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.column {
+  flex: 1;
+  padding: 20px;
+}
