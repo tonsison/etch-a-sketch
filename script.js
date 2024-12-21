@@ -11,6 +11,7 @@ function sketchTrace(userRow) {
     for (j = 0; j < userRow; j++) {
       const column = document.createElement("div");
       column.classList.add("column");
+      column.textContent = ".";
       column.addEventListener('mouseenter', () => {
         column.style.backgroundColor = "black";
       });
