@@ -3,16 +3,14 @@ const numberSquares = document.querySelector("#popup");
 const rowsPresent = document.querySelector(".row");
 
 let initialRow = 16;
-let initialColumn = 16;
 
-function sketchTrace(userRow, userColumn) {
+function sketchTrace(userRow) {
   for (i = 0; i < userRow; i++) {
     const row = document.createElement("div")
     row.id = "row";
-    for (j = 0; j < userColumn; j++) {
+    for (j = 0; j < userRow; j++) {
       const column = document.createElement("div");
       column.classList.add("column");
-      column.textContent = "X";
       column.addEventListener('mouseenter', () => {
         column.style.backgroundColor = "black";
       });
@@ -23,7 +21,7 @@ function sketchTrace(userRow, userColumn) {
   }
 }
 
-sketchTrace(initialRow, initialColumn);
+sketchTrace(initialRow);
 
 function clearTrace(oldRow) {
   for (i = 0; i < oldRow; i++) {
@@ -34,10 +32,13 @@ function clearTrace(oldRow) {
 }
 
 numberSquares.addEventListener('click', () => {
-  buttonPressed = true;
-  let userRow = prompt("How many rows of squares do you want?");
-  let userColumn = prompt("How many columns of squares do you want?");
-  clearTrace(initialRow);
-  initialRow = userRow;
-  sketchTrace(userRow, userColumn);
+  let userRow = prompt("How many squares do you want for each side?");
+  if (userRow <= 100) {
+    clearTrace(initialRow);
+    initialRow = userRow;
+    sketchTrace(userRow);
+  }
+  else {
+    alert("Please use a MAXIMUM of 100 squares");
+  }
 });
